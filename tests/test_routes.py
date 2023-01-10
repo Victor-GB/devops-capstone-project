@@ -141,12 +141,12 @@ class TestAccountService(TestCase):
         self.assertEqual(resp.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_get_account_list(self):
-        """It should get a list of Accounts"""    
+        """It should get a list of Accounts"""
         self._create_accounts(5)
-        resp=self.client.get(BASE_URL)
-        self.assertEqual(resp.status_code,status.HTTP_200_OK)
-        data=resp.get_json()
-        self.assertEqual(len(data),5)
+        resp = self.client.get(BASE_URL)
+        self.assertEqual(resp.status_code, status.HTTP_200_OK)
+        data = resp.get_json()
+        self.assertEqual(len(data), 5)
 
     def test_update_account(self):
         """It should Update an existing Account"""
@@ -165,6 +165,6 @@ class TestAccountService(TestCase):
 
     def test_delete_account(self):
         """It should Delete an Account"""
-        account=self._create_accounts(1)[0]
-        resp=self.client.delete(f"{BASE_URL}/{account.id}")
-        self.assertEqual(resp.status_code,status.HTTP_204_NO_CONTENT)
+        account = self._create_accounts(1)[0]
+        resp = self.client.delete(f"{BASE_URL}/{account.id}")
+        self.assertEqual(resp.status_code, status.HTTP_204_NO_CONTENT)
